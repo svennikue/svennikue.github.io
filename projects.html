@@ -3,290 +3,82 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Svenja Küchenhoff | Computational Neuroscience</title>
-
-  <!-- Inter -->
+  <title>Projects — Svenja Küchenhoff</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg: #ffffff;
-      --muted: #6b7280;
-      --text: #0f172a;
-      --card: #ffffff;
-      --border: #eceef2;
-      --accent: #2563eb;
-      --accent-turq: #0b8b87;  /* dark turquoise */
-      --shadow: 0 6px 22px rgba(15,23,42,0.06);
-      --radius: 12px;
-      --container: 1100px;
-    }
-
+    :root{--bg:#fff;--text:#0f172a;--muted:#6b7280;--border:#eceef2;--accent-turq:#0b8b87;--container:1100px;--radius:12px;--shadow:0 10px 30px rgba(2,6,23,0.06)}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;padding:32px 20px;line-height:1.5}
-    a{color:var(--accent-turq); text-decoration:none}
-    a:hover{text-decoration:underline}
-
+    body{font-family:Inter,system-ui;margin:28px;background:var(--bg);color:var(--text)}
     .wrap{max-width:var(--container);margin:0 auto}
-
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
-    .brand .title{font-weight:700;font-size:1rem}
-    .brand .subtitle{font-size:0.85rem;color:var(--muted)}
-    nav a{margin-left:14px;color:var(--muted);font-size:0.95rem}
-    nav a:hover{color:var(--text)}
-
-    .hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-
-    .hero h1{margin:0 0 8px;font-size:1.9rem;font-weight:700}
-    .hero h2{margin:0 0 12px;color:var(--muted);font-weight:500}
-    .hero p{margin:0 0 12px;color:var(--muted)}
-
-    /* banner (use NeuroMAI as a wide banner image) */
-    .banner{
-      width:100%;
-      height:220px;
-      border-radius:12px;
-      overflow:hidden;
-      margin:16px 0;
-      border:1px solid var(--border);
-      box-shadow:0 10px 30px rgba(2,6,23,0.04);
-    }
-    .banner img{width:100%;height:100%;object-fit:cover;display:block}
-
-    .grid-2{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
-    @media(max-width:980px){.grid-2{grid-template-columns:1fr}}
-
-    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
-    .chips{margin-top:10px}
-    .chip{display:inline-block;padding:6px 10px;border-radius:999px;font-size:0.85rem;color:var(--muted);border:1px solid #f1f3f6;margin-right:8px;background:linear-gradient(180deg,#fff,#fbfdff)}
-
-    /* profile compact — now removed (banner used instead) */
-    .contact .row{margin-bottom:10px;font-size:0.95rem}
-    .contact a{color:var(--accent-turq)}
-
-    /* publications */
-    .pub-links a{margin-left:8px;color:var(--accent-turq);font-size:0.9rem}
-
-    /* gallery */
-    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    @media(max-width:1000px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){.gallery-grid{grid-template-columns:1fr}}
-
-    .media-card{position:relative;overflow:hidden;border-radius:10px;background:#f8fafc;border:1px solid var(--border);height:220px;display:flex;align-items:center;justify-content:center;transition:transform .28s,box-shadow .2s;cursor:pointer}
-    .media-card:focus{outline:3px solid rgba(11,139,135,0.12)}
-    .media-card:hover,.media-card:focus{transform:scale(1.02);z-index:2;box-shadow:0 18px 40px rgba(15,23,42,0.12)}
-    .media-card img,.media-card video{width:100%;height:100%;object-fit:cover}
-
-    /* overlay (lightbox) */
-    .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.55);z-index:9999;padding:20px}
-    .overlay.show{display:flex}
-    .overlay-content{max-width:90vw;max-height:90vh;border-radius:12px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;position:relative}
-    .overlay-content img,.overlay-content video{width:100%;height:100%;object-fit:contain;background:#111}
-    .overlay-close{position:absolute;right:10px;top:10px;background:var(--accent-turq);color:#fff;border-radius:8px;padding:8px 10px;border:0;cursor:pointer;font-weight:600}
-    .overlay-close:hover{opacity:.95}
-
-    footer{margin-top:36px;color:var(--muted);font-size:0.9rem;text-align:center}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    header a{color:var(--accent-turq);text-decoration:none}
+    .tile{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:18px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start}
+    .tile img{width:360px;max-width:38%;height:auto;object-fit:cover;border-radius:10px}
+    .tile .content{flex:1}
+    .tile h2{margin:0 0 6px}
+    .meta{color:var(--muted);font-size:0.95rem;margin-bottom:10px}
+    @media(max-width:900px){ .tile{flex-direction:column} .tile img{width:100%;max-width:100%} }
+    .tile.highlight{box-shadow:0 24px 48px rgba(11,139,135,0.08);border:2px solid var(--accent-turq);transition:box-shadow .35s,border .35s}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="title">Svenja Küchenhoff</div>
-        <div class="subtitle">Computational Neuroscience — DPhil Student, University of Oxford</div>
-      </div>
-
-      <nav>
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="projects.html#top">Projects</a> <!-- links to projects page -->
-        <a href="#media">Media</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <a href="index.html">← Back to home</a>
+      <div><strong>Projects</strong></div>
     </header>
 
-    <main>
-      <section id="about" class="hero-card hero">
-        <h1>Computational Neuroscience &amp; Abstract Cognition</h1>
+    <div id="top"></div>
 
-        <!-- BANNER: NeuroMAI image used as wide banner -->
-        <div class="banner" aria-hidden="true">
-          <img src="assets/pictures/2025-05-NeuroMAI.jpeg" alt="Svenja giving a talk at NeuroMAI">
-        </div>
+    <!-- TrendCamina tile -->
+    <article id="trendcamina" class="tile" tabindex="-1" role="article" aria-labelledby="tc-title">
+      <img src="assets/pictures/2025-07-TrendCamina.jpg" alt="TReND-CaMinA course photo">
+      <div class="content">
+        <h2 id="tc-title">TReND-CaMinA — Teaching & Student Projects (2025 / 2026)</h2>
+        <div class="meta">Lecturer &amp; tutor — MRI lecture, Python tutorials, student project supervision</div>
 
-        <h2>DPhil Student · University of Oxford</h2>
-        <p>I study how the brain uses structured internal models to plan, abstract, and generalise across tasks and environments. My research combines computational modelling with human fMRI, invasive electrophysiology, and rodent recordings to probe neural representations of future states.</p>
+        <p>
+          Accomplished enabling student project completion as measured by finished analyses and student presentations by delivering a lecture on MRI for computational neuroscience, running Python tutorials, and supervising a student team to build a reproducible analysis pipeline for an Allen Institute calcium-imaging dataset.
+        </p>
 
-        <div class="chips" aria-hidden="true">
-          <span class="chip">Planning — schema generalisation</span>
-          <span class="chip">Human iEEG &amp; fMRI</span>
-          <span class="chip">Rodent electrophysiology</span>
-          <span class="chip">Reinforcement learning</span>
-        </div>
-      </section>
+        <p>
+          Accomplished clear science communication as measured by students presenting project results to peers by preparing modular teaching materials, breaking projects into milestones, and coaching presentation skills.
+        </p>
 
-      <div style="height:14px"></div>
+        <p>
+          <strong>Materials & report:</strong>
+          <a href="assets/pdfs/CaMinA_Report2024.pdf" target="_blank" rel="noopener noreferrer">TReND-CaMinA report (PDF)</a>. :contentReference[oaicite:9]{index=9}
+        </p>
+      </div>
+    </article>
 
-      <section class="grid-2">
-        <aside class="card contact" id="contact">
-          <div style="font-weight:700">Contact</div>
-          <div class="row">University of Oxford · Oxford, UK</div>
-          <div class="row">+49 163 1310548</div>
-          <div class="row"><a href="mailto:svenja.kuechenhoff@ndcn.ox.ac.uk">svenja.kuechenhoff@ndcn.ox.ac.uk</a></div>
-          <div class="row"><a href="assets/pdfs/Svenja_Kuechenhoff_CV_2025.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae (PDF)</a></div>
-          <div class="row" style="color:var(--muted);font-size:0.9rem;margin-top:10px">Boehringer Ingelheim Fonds PhD Fellow · German Scholarship Foundation Scholar</div>
-        </aside>
+    <!-- placeholder tile -->
+    <article id="future-project" class="tile" tabindex="-1" role="article" aria-labelledby="fut-title">
+      <img src="assets/pictures/2025-10-SalomonTrail.jpeg" alt="">
+      <div class="content">
+        <h2 id="fut-title">Project placeholder — add more here</h2>
+        <div class="meta">Short description or dates</div>
+        <p>Use this space to add more projects. Tiles are linkable and highlight when navigated to.</p>
+      </div>
+    </article>
 
-        <div>
-          <div class="card">
-            <h3 style="margin-top:0">Research</h3>
-            <div style="color:var(--muted);font-size:0.95rem">Neural representations of future states — DPhil project (2022–present)</div>
-            <p style="margin-top:10px;color:var(--muted)">I use multivariate analyses and model-based approaches to link human fMRI and iEEG (LFP & spikes) to mechanistic theories of higher cognition.</p>
-          </div>
-
-          <div style="height:14px"></div>
-
-          <div class="card" id="publications">
-            <h3 style="margin-top:0">Selected publications</h3>
-            <ul style="margin-top:8px;padding-left:1rem;color:var(--text)">
-              <li><strong>Küchenhoff, S.</strong>, Behrens, T.E.J., et al. Algorithmic representations underlying schema generalisation. Talks at CogSci (2025), RLDM (2024).</li>
-              <li><strong>Küchenhoff, S.</strong>, Zsido, R.G., et al. Sex-bias in cortical and hippocampal microstructure. <em>Nature Communications</em>, 2024. <a href="assets/pdfs/2024-Nature_comms_sex-bias_microstructure.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a></li>
-              <li>Contreras-Huerta, L.S., Pisauro, A., <strong>Küchenhoff, S.</strong>, et al. Reward self-bias in foraging. <em>Scientific Reports</em>, 2024. <a href="assets/pdfs/2024-SciReps-self-bias_foraging.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a></li>
-              <li><strong>Küchenhoff, S.</strong>, Doerflinger, J., Heinzelmann, N. Genetic technologies questionnaire. <em>BMC Medical Ethics</em>, 2022. <a href="assets/pdfs/2022-BMC_medical_ethics_GTQ-validation.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- MEDIA -->
-      <section id="media" style="margin-top:28px">
-        <div style="display:flex;align-items:baseline;justify-content:space-between">
-          <div style="font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em">Media</div>
-        </div>
-
-        <div class="card" style="margin-top:12px">
-          <h3 style="margin-top:0">Paintings & Trails</h3>
-          <p style="margin:0 0 12px 0;color:var(--muted)">In my free time, I like to be creative and spend time in the outdoors.</p>
-
-          <div class="gallery-grid" aria-live="polite">
-            <div class="media-card" tabindex="0" role="button" data-type="video" data-src="assets/pictures/2024-11-Painting.mp4" aria-label="Painting video">
-              <video muted loop preload="metadata" playsinline>
-                <source src="assets/pictures/2024-11-Painting.mp4" type="video/mp4">
-              </video>
-            </div>
-
-            <div class="media-card" tabindex="0" role="button" data-type="image" data-src="assets/pictures/2025-08-DolomiteTrail.jpeg" aria-label="Dolomite Trail">
-              <img src="assets/pictures/2025-08-DolomiteTrail.jpeg" alt="">
-            </div>
-
-            <div class="media-card" tabindex="0" role="button" data-type="image" data-src="assets/pictures/2025-10-SalomonTrail.jpeg" aria-label="Salomon Trail">
-              <img src="assets/pictures/2025-10-SalomonTrail.jpeg" alt="">
-            </div>
-
-            <div class="media-card" tabindex="0" role="button" data-type="image" data-src="assets/pictures/2025-10-SalomonTrail2.jpeg" aria-label="Salomon Trail 2">
-              <img src="assets/pictures/2025-10-SalomonTrail2.jpeg" alt="">
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © <span id="year"></span> Svenja Küchenhoff · Computational Neuroscience
-    </footer>
-  </div>
-
-  <!-- overlay/lightbox -->
-  <div id="overlay" class="overlay" aria-hidden="true" role="dialog" aria-label="Media preview">
-    <div class="overlay-content" role="document">
-      <button id="overlay-close" class="overlay-close" aria-label="Close preview">Close ✕</button>
-      <div id="overlay-inner" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"></div>
-    </div>
   </div>
 
   <script>
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // lightbox logic (same pattern used previously)
-    const overlay = document.getElementById('overlay');
-    const overlayInner = document.getElementById('overlay-inner');
-    const overlayClose = document.getElementById('overlay-close');
-
-    function setOverlay(open) {
-      if (open) {
-        overlay.classList.add('show');
-        overlay.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-      } else {
-        overlay.classList.remove('show');
-        overlay.setAttribute('aria-hidden','true');
-        document.body.style.overflow = '';
-        overlayInner.innerHTML = '';
-      }
+    function focusTile(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const yOffset = -24;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior:'smooth'});
+      el.classList.add('highlight');
+      window.setTimeout(()=> el.classList.remove('highlight'), 3500);
+      el.focus({preventScroll:true});
     }
-
-    function createEl(type, src) {
-      if (type === 'video') {
-        const v = document.createElement('video');
-        v.src = src;
-        v.loop = true;
-        v.muted = true;
-        v.autoplay = true;
-        v.playsInline = true;
-        v.controls = true;
-        v.style.maxWidth = '100%';
-        v.style.maxHeight = '100%';
-        return v;
-      } else {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = '';
-        img.style.maxWidth = '100%';
-        img.style.maxHeight = '100%';
-        return img;
-      }
-    }
-
-    function openPreview(type, src) {
-      const el = createEl(type, src);
-      overlayInner.appendChild(el);
-      setOverlay(true);
-      if (type === 'video') {
-        const p = el.play && el.play();
-        if (p && p.catch) p.catch(()=>{});
-      }
-    }
-
-    document.querySelectorAll('.media-card').forEach(card => {
-      const type = card.dataset.type;
-      const src = card.dataset.src;
-
-      card.addEventListener('mouseenter', (e) => {
-        if ('ontouchstart' in window) return;
-        openPreview(type, src);
-      });
-      card.addEventListener('mouseleave', (e) => {
-        if ('ontouchstart' in window) return;
-        setOverlay(false);
-      });
-
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPreview(type, src);
-      });
-
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPreview(type, src); }
-        if (e.key === 'Escape') setOverlay(false);
-      });
+    window.addEventListener('load', () => {
+      const hash = location.hash.replace('#','');
+      if(hash && hash !== 'top'){ setTimeout(()=> focusTile(hash), 150) }
     });
-
-    overlayClose.addEventListener('click', () => setOverlay(false));
-    overlay.addEventListener('click', e => { if (e.target === overlay) setOverlay(false); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') setOverlay(false); });
   </script>
 </body>
 </html>
