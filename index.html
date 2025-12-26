@@ -25,7 +25,7 @@
     header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
     .brand .title{font-weight:700;font-size:1rem}
     .brand .subtitle{font-size:0.85rem;color:var(--muted)}
-    nav a{margin-left:14px;color:var(--muted);font-size:0.95rem}
+    nav a{margin-left:12px;color:var(--muted);font-size:0.95rem}
     nav a:hover{color:var(--text)}
     .hero-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
     .hero h1{margin:0 0 8px;font-size:1.9rem;font-weight:700}
@@ -52,7 +52,6 @@
     .overlay-content{max-width:90vw;max-height:90vh;border-radius:12px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;position:relative}
     .overlay-content img,.overlay-content video{width:100%;height:100%;object-fit:contain;background:#111}
     .overlay-close{position:absolute;right:10px;top:10px;background:var(--accent-turq);color:#fff;border-radius:8px;padding:8px 10px;border:0;cursor:pointer;font-weight:600}
-    .overlay-close:hover{opacity:.95}
     footer{margin-top:36px;color:var(--muted);font-size:0.9rem;text-align:center}
     .wide{width:100%;display:block}
     .experience-list{margin:0;padding:0}
@@ -69,7 +68,6 @@
 
       <nav>
         <a href="#about">About</a>
-        <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#awards">Awards</a>
         <a href="#experiences">Experiences</a>
@@ -101,12 +99,6 @@
         </div>
       </section>
 
-      <!-- RESEARCH -->
-      <section id="research" class="card" aria-labelledby="res-title">
-        <h3 id="res-title" style="margin-top:0">Research</h3>
-        <p style="margin:0;color:var(--muted)">I use multivariate analyses and model-based approaches to link human fMRI and iEEG (LFP &amp; spikes) to mechanistic theories of higher cognition inspired by computational models and rodent electrophysiology.</p>
-      </section>
-
       <!-- PUBLICATIONS (full width) -->
       <section id="publications" class="card wide" aria-labelledby="pub-title">
         <h3 id="pub-title" style="margin-top:0">Selected publications</h3>
@@ -119,6 +111,7 @@
             <strong>Küchenhoff, S.</strong>, Zsido, R.G., Saberi, A., Bernhardt, B., Weiss, S., Eickhoff, S., Sacher, J., Valk, S.L.
             Sex-bias in cortical and hippocampal microstructure. <em>Nature Communications</em>, 2024.
             <a href="assets/pdfs/2024-Nature_comms_sex-bias_microstructure.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
+            <a href="projects.html#sex-bias" target="_self">[Project]</a>
           </li>
           <li>
             Contreras-Huerta, L.S., Pisauro, A., <strong>Küchenhoff, S.</strong>, et al. Reward self-bias in foraging. <em>Scientific Reports</em>, 2024.
@@ -149,28 +142,28 @@
         </ul>
       </section>
 
-      <!-- EXPERIENCES (concise facts only) -->
+      <!-- EXPERIENCES (concise facts only, updated) -->
       <section id="experiences" class="card wide" aria-labelledby="exp-title">
         <h3 id="exp-title" style="margin-top:0">Experiences</h3>
         <ul class="experience-list">
           <li class="experience-item">
             <strong>University of Oxford — DPhil Researcher (2022–present)</strong><br>
-            Built and maintained reproducible Python analysis pipelines for human neuroimaging and electrophysiology data; these pipelines improved analysis iteration time and produced consistent results across experiments.
+            I use multivariate analyses and model-based approaches to link human fMRI and iEEG (LFP &amp; spikes) to mechanistic theories of higher cognition inspired by computational models and rodent electrophysiology. I write reproducible Python, Bash and Matlab analysis pipelines for human neuroimaging and electrophysiology data.
+          </li>
+
+          <li class="experience-item">
+            <strong>Skippy Ed — Strategic &amp; Scientific Advisor (2025 - present)</strong><br>
+            AI-driven career guidance start-up that I advise on strategy, questionnaire validation and scientific direction.
+          </li>
+
+          <li class="experience-item">
+            <strong>Merck KGaA — CEO Office Intern (Strategy) (2020)</strong><br>
+            Strategic project management support.
           </li>
 
           <li class="experience-item">
             <strong>CPC-AG — Intern &amp; Student Consultant (2017–2019), Frankfurt, Germany</strong><br>
             Worked on change-management projects, developed immersive business simulations, and led agile &amp; Scrum trainings for client teams.
-          </li>
-
-          <li class="experience-item">
-            <strong>Merck KGaA — CEO Office Intern (Strategy) (2020)</strong><br>
-            Prepared decision materials and coordinated portfolio metrics used in executive planning.
-          </li>
-
-          <li class="experience-item">
-            <strong>Skippy Ed — Strategic &amp; Scientific Advisor (2025)</strong><br>
-            Scoped evaluation plans and supported early user testing to define measurable roadmap milestones.
           </li>
         </ul>
       </section>
