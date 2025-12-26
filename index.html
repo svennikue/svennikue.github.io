@@ -1,354 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Svenja Küchenhoff | Computational Neuroscience</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0c1024;
-      --card: #111428;
-      --accent: #7aa2ff;
-      --accent-soft: rgba(122, 162, 255, 0.12);
-      --text: #f5f5ff;
-      --muted: #a0a3be;
-      --border: #262a40;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #182544 0, #050816 40%, #02010b 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.8rem 1.4rem 3rem;
+    :root{
+      --bg: #ffffff;
+      --muted: #6b7280;
+      --text: #0f172a;
+      --card: #ffffff;
+      --border: #e6e9ef;
+      --accent: #2563eb;
+      --shadow: 0 6px 22px rgba(15,23,42,0.08);
+      --radius: 12px;
+      --container: 1100px;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.2rem;
-    }
-    .brand {
-      font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .nav a {
-      font-size: 0.9rem;
-      margin-left: 1.1rem;
-      color: var(--muted);
-    }
-    .nav a:hover {
-      color: var(--accent);
-    }
-    @media (max-width: 720px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav {
-        margin-top: 0.4rem;
-      }
-      .nav a {
-        margin-left: 0;
-        margin-right: 0.8rem;
-      }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px 20px;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
-      gap: 2rem;
-      align-items: center;
-      margin-bottom: 2.2rem;
-    }
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-    .hero h1 {
-      font-size: 2.2rem;
-      margin: 0 0 0.2rem;
-    }
-    .hero h2 {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--muted);
-      margin: 0 0 1rem;
-    }
-    .hero p {
-      font-size: 0.98rem;
-      max-width: 32rem;
-    }
-    .chips {
-      margin-top: 0.8rem;
-      font-size: 0.8rem;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid var(--accent-soft);
-      padding: 0.15rem 0.7rem;
-      margin-right: 0.4rem;
-      margin-bottom: 0.35rem;
-    }
-    .hero-side {
-      background: linear-gradient(135deg, rgba(122,162,255,0.25), rgba(0,0,0,0.1));
-      border-radius: 16px;
-      padding: 1.4rem 1.5rem;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.65);
-      font-size: 0.88rem;
-    }
-    .hero-side h3 {
-      margin-top: 0;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-    .hero-side .row {
-      margin-bottom: 0.35rem;
+    .wrap{
+      max-width:var(--container);
+      margin:0 auto;
     }
 
-    .section {
-      margin-top: 2.4rem;
-    }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
-    @media (max-width: 1000px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .brand .title{
+      font-weight:700;
+      letter-spacing:0.01em;
+      font-size:1rem;
     }
-    @media (max-width: 720px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      padding: 1rem 1.05rem;
-      font-size: 0.9rem;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.5);
-    }
-    .card h3 {
-      margin: 0 0 0.25rem;
-      font-size: 0.96rem;
-    }
-    .card .meta {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-    .card p {
-      margin: 0.3rem 0;
+    .brand .subtitle{
+      font-size:0.85rem;
+      color:var(--muted);
     }
 
-    .list {
-      font-size: 0.9rem;
+    nav a{
+      margin-left:14px;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:0.95rem;
     }
-    .list li {
-      margin-bottom: 0.35rem;
+    nav a:hover{color:var(--text)}
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:start;
+    }
+    @media(max-width:980px){
+      .grid-2{grid-template-columns: 1fr}
     }
 
-    footer {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
     }
+
+    .hero h1{
+      margin:0 0 6px 0;
+      font-size:1.9rem;
+      font-weight:700;
+    }
+    .hero h2{
+      margin:0 0 12px 0;
+      color:var(--muted);
+      font-weight:500;
+      font-size:1rem;
+    }
+    .chips{margin-top:10px}
+    .chip{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:0.85rem;
+      color:var(--muted);
+      border:1px solid #f0f2f5;
+      margin-right:8px;
+      margin-bottom:8px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+    }
+
+    aside.contact .row{margin-bottom:10px; font-size:0.95rem}
+    aside.contact a{color:var(--accent); text-decoration:none}
+    aside.contact .muted{color:var(--muted); font-size:0.85rem}
+
+    /* Publications */
+    .publications .list{padding-left:1rem}
+    .publications li{margin-bottom:10px}
+    .pub-links a{margin-left:8px; color:var(--accent); text-decoration:none; font-size:0.9rem}
+    .pub-links a:hover{text-decoration:underline}
+
+    /* Gallery */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media(max-width:1000px){ .gallery-grid{grid-template-columns: repeat(2,1fr)}}
+    @media(max-width:640px){ .gallery-grid{grid-template-columns: 1fr} }
+
+    .media-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:10px;
+      background:#f8fafc;
+      border:1px solid var(--border);
+      height:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .2s;
+      cursor: pointer;
+    }
+    .media-card:focus{outline:3px solid rgba(37,99,235,0.12)}
+    .media-card:hover, .media-card:focus{
+      transform:scale(1.04);
+      z-index:3;
+      box-shadow:0 18px 40px rgba(15,23,42,0.12);
+    }
+
+    .media-card img, .media-card video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition: transform .45s ease;
+      transform-origin:center center;
+    }
+
+    .media-caption{
+      position:absolute;
+      left:12px;
+      bottom:10px;
+      background:rgba(255,255,255,0.9);
+      padding:6px 8px;
+      border-radius:8px;
+      font-size:0.85rem;
+      color:var(--text);
+      box-shadow:0 4px 12px rgba(2,6,23,0.06);
+    }
+
+    /* Footer */
+    footer{margin-top:36px; color:var(--muted); font-size:0.9rem; text-align:center}
+
   </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand">Svenja Küchenhoff</div>
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#awards">Awards</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div>
+          <div class="title">Svenja Küchenhoff</div>
+          <div class="subtitle">Computational Neuroscience — DPhil Student, University of Oxford</div>
+        </div>
+      </div>
 
-  <section class="hero" id="about">
-    <div>
-      <h1>Computational Neuroscience &amp; Abstract Cognition</h1>
-      <h2>DPhil Student · University of Oxford</h2>
-      <p>
-        I work on how the brain uses structured internal models to plan, abstract, and generalise across tasks and environments.
-        My research combines computational modelling with human fMRI, invasive electrophysiology, and rodent recordings
-        to probe neural representations of future states.
-      </p>
-      <div class="chips">
-        <span class="chip">Planning & schema generalisation</span>
-        <span class="chip">Human iEEG & fMRI</span>
-        <span class="chip">Rodent electrophysiology</span>
-        <span class="chip">Reinforcement learning & representation learning</span>
-      </div>
-    </div>
-    <aside class="hero-side">
-      <h3>Contact</h3>
-      <div class="row">University of Oxford · Oxford, UK</div>
-      <div class="row">+49 163 1310548</div>
-      <div class="row">
-        <a href="mailto:svenja.kuechenhoff@ndcn.ox.ac.uk">svenja.kuechenhoff@ndcn.ox.ac.uk</a>
-      </div>
-      <div class="row">
-        <a href="#" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <div class="row">
-        <a href="CV-2.pdf" target="_blank" rel="noopener">Curriculum Vitae (PDF)</a>
-      </div>
-      <div class="row" style="margin-top:0.7rem; color: var(--muted); font-size:0.8rem;">
-        Boehringer Ingelheim Fonds PhD Fellow · German Scholarship Foundation Scholar
-      </div>
-    </aside>
-  </section>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#media">Media</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <section class="section" id="research">
-    <div class="section-header">
-      <div class="section-title">Research</div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h3>Neural representations of future states</h3>
-        <div class="meta">DPhil project · 2022 – present</div>
-        <p>
-          I study how neural populations encode abstract structure that supports flexible planning and schema generalisation.
-          I use multivariate analyses and model-based approaches to link human fMRI and iEEG (LFP and spikes) to mechanistic
-          theories of higher cognition.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Cross-species & cross-modal modelling</h3>
-        <p>
-          My work connects human data with complementary rodent recordings, enabling comparisons across species and scales.
-          This allows me to test hypotheses about shared coding principles underlying planning and generalisation.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Previous projects</h3>
-        <div class="meta">Max Planck · Oxford · LMU</div>
-        <p>
-          Previous work spans intracortical microstructure and sex hormones, serotonergic modulation of functional
-          connectivity, and computational studies of social foraging.
-        </p>
-      </div>
-    </div>
-  </section>
+    <main>
+      <section id="about" class="grid-2">
+        <div class="card hero">
+          <h1>Computational Neuroscience &amp; Abstract Cognition</h1>
+          <h2>DPhil Student · University of Oxford</h2>
+          <p>I study how the brain uses structured internal models to plan, abstract, and generalise across tasks and environments. My research combines computational modelling with human fMRI, invasive electrophysiology, and rodent recordings to probe neural representations of future states.</p>
 
-  <section class="section" id="publications">
-    <div class="section-header">
-      <div class="section-title">Publications</div>
-    </div>
-    <div class="card">
-      <h3>Selected publications</h3>
-      <ul class="list">
-        <li><strong>Küchenhoff, S.</strong>, Behrens, T.E.J., et al. Algorithmic representations underlying schema generalisation.
-          Talks at CogSci (2025), RLDM (2024), Mathematics of Neuroscience and AI (2024); OFC Poster (2023).</li>
-        <li><strong>Küchenhoff, S.</strong>, Zsido, R.G., Saberi, A., Bernhardt, B., Weiss, S., Eickhoff, S., Sacher, J., Valk, S.L.
-          Sex-bias in cortical and hippocampal microstructure. <em>Nature Communications</em>, 2024.</li>
-        <li>Contreras-Huerta, L.S., Pisauro, A., <strong>Küchenhoff, S.</strong>, et al. Reward self-bias in foraging.
-          <em>Scientific Reports</em>, 2024.</li>
-        <li><strong>Küchenhoff, S.</strong>, Doerflinger, J., Heinzelmann, N. Genetic technologies questionnaire.
-          <em>BMC Medical Ethics</em>, 2022.</li>
-      </ul>
-    </div>
-  </section>
+          <div class="chips" aria-hidden="true">
+            <span class="chip">Planning &mdash; schema generalisation</span>
+            <span class="chip">Human iEEG &amp; fMRI</span>
+            <span class="chip">Rodent electrophysiology</span>
+            <span class="chip">Reinforcement learning</span>
+          </div>
+        </div>
 
-  <section class="section" id="teaching">
-    <div class="section-header">
-      <div class="section-title">Teaching</div>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h3>Teaching & supervision</h3>
-        <p>
-          I teach at the interface of machine learning and systems neuroscience, from undergraduate tutorials at Oxford
-          to international summer schools.
-        </p>
-        <ul class="list">
-          <li>TA, Computational Neuroscience – Trend CAMINA Summer School (2025)</li>
-          <li>Tutor, “How to Build a Brain from Scratch” (2024–2025)</li>
-          <li>Tutor, “Experimental design of fMRI experiments” – WIN MRI Graduate Course (2024)</li>
-          <li>Dissertation Supervisor – MSc Neuroscience, Oxford (2024)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Mentoring</h3>
-        <p>
-          I regularly mentor undergraduate and MSc students interested in computational and cognitive neuroscience,
-          with a focus on rigorous experimental design and model-based analysis.
-        </p>
-      </div>
-    </div>
-  </section>
+        <aside class="card contact" id="contact">
+          <div class="row"><strong>Contact</strong></div>
+          <div class="row">University of Oxford · Oxford, UK</div>
+          <div class="row">+49 163 1310548</div>
+          <div class="row"><a href="mailto:svenja.kuechenhoff@ndcn.ox.ac.uk">svenja.kuechenhoff@ndcn.ox.ac.uk</a></div>
+          <div class="row"><a href="assets/pdfs/Svenja_Kuechenhoff_CV_2025.pdf" target="_blank" rel="noopener noreferrer">Curriculum Vitae (PDF)</a></div>
+          <div class="row muted">Boehringer Ingelheim Fonds PhD Fellow · German Scholarship Foundation Scholar</div>
+        </aside>
+      </section>
 
-  <section class="section" id="awards">
-    <div class="section-header">
-      <div class="section-title">Awards</div>
-    </div>
-    <div class="card">
-      <h3>Awards & fellowships</h3>
-      <ul class="list">
-        <li>German Scholarship Foundation — PhD Fellowship (2024–present)</li>
-        <li>Boehringer Ingelheim Fonds — PhD Fellow (2023–present)</li>
-        <li>Wilfred Knapp Science Scholarship — St Catherine’s College, Oxford (2023–2025)</li>
-        <li>German Scholarship Foundation — Max-Weber-Program (2018–2021)</li>
-        <li>DAAD PROMOS – MSc funding at Oxford (top 2–3%) (2020–2021)</li>
-      </ul>
-    </div>
-  </section>
+      <section id="research" class="section" style="margin-top:28px">
+        <div class="section-header" style="display:flex;justify-content:space-between;align-items:end;margin-bottom:12px">
+          <div style="font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em">Research</div>
+        </div>
 
-  <footer>
-    © <span id="year"></span> Svenja Küchenhoff · Computational Neuroscience
-  </footer>
-</div>
+        <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div class="card">
+            <h3 style="margin-top:0;margin-bottom:6px">Neural representations of future states</h3>
+            <div style="color:var(--muted);font-size:0.9rem;margin-bottom:8px">DPhil project · 2022 – present</div>
+            <p style="margin:0">I use multivariate analyses and model-based approaches to link human fMRI and iEEG (LFP & spikes) to mechanistic theories of higher cognition.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;margin-bottom:6px">Cross-species modelling</h3>
+            <p style="margin:0">Connecting human data with rodent recordings to test shared coding principles underlying planning and generalisation.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;margin-bottom:6px">Previous projects</h3>
+            <div style="color:var(--muted);font-size:0.9rem;margin-bottom:8px">Max Planck · Oxford · LMU</div>
+            <p style="margin:0">Intracortical microstructure, serotonergic modulation of connectivity, and computational studies of foraging.</p>
+          </div>
+        </div>
+      </section>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+      <section id="publications" style="margin-top:28px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em">Publications</div>
+        </div>
+
+        <div class="card publications" style="margin-top:12px">
+          <h3 style="margin-top:0">Selected publications</h3>
+          <ul class="list" style="margin-top:8px">
+            <li>
+              <strong>Küchenhoff, S.</strong>, Behrens, T.E.J., et al. Algorithmic representations underlying schema generalisation.
+              Talks at CogSci (2025), RLDM (2024), Mathematics of Neuroscience and AI (2024).
+            </li>
+
+            <li>
+              <strong>Küchenhoff, S.</strong>, Zsido, R.G., Saberi, A., Bernhardt, B., Weiss, S., Eickhoff, S., Sacher, J., Valk, S.L.
+              Sex-bias in cortical and hippocampal microstructure. <em>Nature Communications</em>, 2024.
+              <span class="pub-links">
+                <a href="assets/pdfs/2024-Nature_comms_sex-bias_microstructure.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
+              </span>
+            </li>
+
+            <li>
+              Contreras-Huerta, L.S., Pisauro, A., <strong>Küchenhoff, S.</strong>, et al. Reward self-bias in foraging. <em>Scientific Reports</em>, 2024.
+              <span class="pub-links">
+                <a href="assets/pdfs/2024-SciReps-self-bias_foraging.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
+              </span>
+            </li>
+
+            <li>
+              <strong>Küchenhoff, S.</strong>, Doerflinger, J., Heinzelmann, N. Genetic technologies questionnaire. <em>BMC Medical Ethics</em>, 2022.
+              <span class="pub-links">
+                <a href="assets/pdfs/2022-BMC_medical_ethics_GTQ-validation.pdf" target="_blank" rel="noopener noreferrer">[PDF]</a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MEDIA GALLERY -->
+      <section id="media" style="margin-top:28px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font-size:0.95rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em">Media</div>
+        </div>
+
+        <div style="margin-top:12px" class="card">
+          <h3 style="margin-top:0">Paintings & Trails</h3>
+          <p style="margin:0 0 12px 0;color:var(--muted)">Hover to enlarge. Hover a video to play. Tap or keyboard-focus on mobile to play.</p>
+
+          <div class="gallery-grid" aria-live="polite">
+            <!-- Video card (painting video) -->
+            <div class="media-card" tabindex="0" role="button" aria-label="Painting video — hover to preview">
+              <video muted loop preload="metadata" playsinline>
+                <source src="assets/pictures/2024-11-Painting.mp4" type="video/mp4">
+                Your browser does not support the video element.
+              </video>
+              <div class="media-caption">Painting (video)</div>
+            </div>
+
+            <!-- Trail images -->
+            <div class="media-card" tabindex="0" role="button" aria-label="Dolomite trail photo">
+              <img src="assets/pictures/2025-08-DolomiteTrail.jpeg" alt="Dolomite Trail photo">
+              <div class="media-caption">Dolomite Trail</div>
+            </div>
+
+            <div class="media-card" tabindex="0" role="button" aria-label="Salomon Trail photo 1">
+              <img src="assets/pictures/2025-10-SalomonTrail.jpeg" alt="Salomon Trail photo">
+              <div class="media-caption">Salomon Trail</div>
+            </div>
+
+            <div class="media-card" tabindex="0" role="button" aria-label="Salomon Trail photo 2">
+              <img src="assets/pictures/2025-10-SalomonTrail2.jpeg" alt="Salomon Trail photo 2">
+              <div class="media-caption">Salomon Trail 2</div>
+            </div>
+
+            <div class="media-card" tabindex="0" role="button" aria-label="NeuroMAI painting photo">
+              <img src="assets/pictures/2025-05-NeuroMAI.jpeg" alt="NeuroMAI painting">
+              <div class="media-caption">NeuroMAI Painting</div>
+            </div>
+
+            <div class="media-card" tabindex="0" role="button" aria-label="2024 painting photo">
+              <img src="assets/pictures/2024-10-Painting.jpeg" alt="Painting 2024">
+              <div class="media-caption">Painting (photo)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Svenja Küchenhoff · Computational Neuroscience
+    </footer>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Play/pause video on hover/focus
+    document.querySelectorAll('.media-card').forEach(card => {
+      const vid = card.querySelector('video');
+      if (!vid) {
+        // for images: no special JS needed; transform is handled by CSS
+        // but support keyboard "activation" to open in new tab on Enter
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            const img = card.querySelector('img');
+            if (img) window.open(img.src, '_blank', 'noopener');
+          }
+        });
+        return;
+      }
+
+      // desktop: mouse interactions
+      card.addEventListener('mouseenter', () => {
+        // attempt to play (mute required by browsers for autoplay)
+        vid.currentTime = 0;
+        const playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {/* autoplay blocked — fine */});
+        }
+      });
+      card.addEventListener('mouseleave', () => {
+        vid.pause();
+        vid.currentTime = 0;
+      });
+
+      // keyboard accessibility: play/pause on focus/blur and Enter to toggle
+      card.addEventListener('focus', () => {
+        const p = vid.play();
+        if (p !== undefined) p.catch(()=>{});
+      }, true);
+      card.addEventListener('blur', () => {
+        vid.pause(); vid.currentTime = 0;
+      }, true);
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          // open video in new tab on Enter
+          window.open(vid.querySelector('source').src, '_blank', 'noopener');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
